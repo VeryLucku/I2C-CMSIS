@@ -1,0 +1,17 @@
+build/*
+cmake/*
+.settings/*
+.vs/*
+.vscode/*
+debug/*
+core/Startup/*
+*.txt
+.cproject
+.mxproject
+.project
+CMakePresets.json
+STM32F411RETX_FLASH.ld
+STM32F411RETX_RAM.ld
+*.ioc
+*.launch
+vcpkg-configuration.json
