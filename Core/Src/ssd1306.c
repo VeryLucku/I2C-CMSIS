@@ -45,8 +45,8 @@ void ssd1306_Fill(SSD1306_COLOR color) {
 void ssd1306_UpdateScreen() {
     uint8_t data[] = {0xB0, 0x00+SSD1306_X_OFFSET_LOWER, 0x10+SSD1306_X_OFFSET_UPPER};
     for (uint8_t i = 0; i < SSD1306_HEIGHT/8; ++i) {
-        I2C_send(data, 3, WRITE_COMMAND_MEM_ADDR);
-        I2C_send(&SSD1306_buffer[SSD1306_WIDTH*i], SSD1306_WIDTH, WRITE_DATA_MEM_ADDR);
+        I2C_send_batch(data, 3, WRITE_COMMAND_MEM_ADDR);
+        I2C_send_batch(&SSD1306_buffer[SSD1306_WIDTH*i], SSD1306_WIDTH, WRITE_DATA_MEM_ADDR);
         ++data[0];
     }
 }
@@ -115,7 +115,7 @@ char ssd1306_WriteString(char* str, FontDef Font, SSD1306_COLOR color) {
 void ssd1306_init() {
     I2C_init();
 
-    I2C_send(init_data, sizeof(init_data)/sizeof(init_data[0]), WRITE_COMMAND_MEM_ADDR);
+    I2C_send_batch(init_data, sizeof(init_data)/sizeof(init_data[0]), WRITE_COMMAND_MEM_ADDR);
 
     ssd1306_Fill(Black);
 

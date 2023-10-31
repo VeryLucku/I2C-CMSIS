@@ -45,7 +45,7 @@ void I2C_init()
     SET_BIT(I2C1->CR1, I2C_CR1_PE);
 }
 
-void I2C_send(uint8_t *data, uint8_t data_size, uint16_t mem_addr)
+void I2C_send_batch(uint8_t *data, uint8_t data_size, uint16_t mem_addr)
 {
     pre_send_data_ops(mem_addr);
 
